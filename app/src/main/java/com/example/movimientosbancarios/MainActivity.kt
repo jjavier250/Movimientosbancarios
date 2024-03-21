@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         txtingresos.text="Total ingresos: " + ingresos.toString()
         txtgastos.text="Total gastos: " + gastos.toString()
-        balance.text="Balance:" + total.toString()
+        balance.text="Balance: " + total.toString()
 
         adapter = MovimientosAdapter(listaAgenda, { llamarPantallaClick(it) })
 
