@@ -49,7 +49,15 @@
         android:textColor="@color/white"
         android:text="balance:">
     </TextView>
+<ImageButton
+    android:id="@+id/btnborrar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:src="@drawable/delete"
+    >
 
+</ImageButton>
 
     <FrameLayout
         android:layout_width="match_parent"

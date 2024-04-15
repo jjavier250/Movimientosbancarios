@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var txtingresos:TextView
     lateinit var txtgastos:TextView
     lateinit var balance:TextView
+    lateinit var btnborrar:ImageButton
 
     //lateinit var adapter:AgendaAdapter
 
@@ -35,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         txtingresos=findViewById(R.id.txtingresos)
         txtgastos=findViewById(R.id.txtgastos)
         balance=findViewById(R.id.balance)
+        btnborrar=findViewById(R.id.btnborrar)
 
     }
 
@@ -79,6 +83,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnborrar.setOnClickListener(){
+            movimientosDao.deleteAll()
+            onResume()
+        }
 
     }
 
@@ -91,4 +99,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+
 }
