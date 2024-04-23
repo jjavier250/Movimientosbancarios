@@ -26,6 +26,7 @@ class MainActivityModificar : AppCompatActivity() {
         //pintamos lo que nos ha devuelto LA BD en los edittext
         binding.txtcantidad.setText(movimientos.cantidad.toString())
         binding.txtfecha.setText(movimientos.fecha)
+        binding.txtdescripcion.setText(movimientos.desc)
 
 
 
@@ -41,7 +42,7 @@ class MainActivityModificar : AppCompatActivity() {
 
                 movimientos.cantidad = cantidad
                 movimientos.fecha=binding.txtfecha.text.toString()
-
+                movimientos.desc=binding.txtdescripcion.text.toString()
 
                 movimientosDao.update(movimientos)
 

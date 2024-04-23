@@ -9,14 +9,15 @@ class DatabaseManager (context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
     companion object {
         const val DATABASE_NAME = "movimientos.db"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
         const val COLUMN_NAME_ID = "id"
 
         private const val SQL_CREATE_TABLE =
             "CREATE TABLE ${Movimientos.TABLE_NAME} (" +
                     "$COLUMN_NAME_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "${Movimientos.COLUMN_NAME_CANTIDAD} TEXT," +
-                    "${Movimientos.COLUMN_NAME_FECHA} TEXT)"
+                    "${Movimientos.COLUMN_NAME_FECHA} TEXT," +
+                    "${Movimientos.COLUMN_NAME_DESC} TEXT)"
 
         private const val SQL_DELETE_TABLE = "DROP TABLE IF EXISTS ${Movimientos.TABLE_NAME}"
     }

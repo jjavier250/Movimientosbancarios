@@ -11,20 +11,21 @@ import com.example.movimientosbancarios.R
 import com.example.movimientosbancarios.provider.Movimientos
 
 
-class MovimientosAdapter(private var dataSet: List<Movimientos> =listOf(), val onClickListener:(Int)->Unit) :
+class MovimientosAdapter(private var dataSet: List<Movimientos> =listOf(), val onClickListener:(Int)->Unit,private val onclickpapelera:(position:Int)->Unit) :
         RecyclerView.Adapter<MovimientosAdapter.MiViewHolder>() {
 
 
         class MiViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val cantidad: TextView
             val fecha: TextView
-
+            val papelera:ImageButton
 
 
             init {
                 // hace referencia el textview que esta en item_agenda saco 3 columnas pero mas abajo pinto 2 de la BD
                 cantidad = view.findViewById(R.id.txtcantidad)
                 fecha=view.findViewById(R.id.txtfecha)
+                papelera=view.findViewById(R.id.papelera)
 
 
             }
@@ -42,7 +43,7 @@ class MovimientosAdapter(private var dataSet: List<Movimientos> =listOf(), val o
 
             // En el MainActivity recogemos las llamdas así :   adapter = AgendaAdapter(listaAgenda, { llamarPantallaClick(it) }, {llamarPapeleraClick(it)})
             viewHolder.itemView.setOnClickListener{onClickListener(position)} // capturamos el click del control
-
+            viewHolder.papelera.setOnClickListener{onclickpapelera(position)} // capturamos el click del papelera
 
 
             //si es el de la sesion el favorito le cambio la linea de color

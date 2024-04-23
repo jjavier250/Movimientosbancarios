@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fecha:"
+            android:text="Fecha:"
             android:textSize="20dp"
             android:textStyle="bold"
             >
@@ -78,7 +78,33 @@
         </EditText>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anotación:"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            >
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <EditText
+            android:id="@+id/txtdescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="400dp"
+            android:maxLength="25">
+
+        </EditText>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

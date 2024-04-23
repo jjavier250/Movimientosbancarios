@@ -35,7 +35,7 @@ class MainActivityinsertar : AppCompatActivity() {
                 val cantidadTexto = binding.txtcantidad.text.toString()
                 cantidad = cantidadTexto.toInt()
 
-                var movimientos: Movimientos = Movimientos(-1, cantidad, binding.txtfecha.text.toString())
+                var movimientos: Movimientos = Movimientos(-1, cantidad, binding.txtfecha.text.toString(),binding.txtdescripcion.text.toString())
                 movimientosDao.insert(movimientos)
                 Log.i("insertar","Insertado en base de datos")
 

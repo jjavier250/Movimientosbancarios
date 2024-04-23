@@ -18,7 +18,7 @@
         android:layout_height="50dp"
         android:text="cantidad"
        android:textStyle="bold"
-        android:textSize="22dp"
+        android:textSize="19dp"
         android:textColor="@color/white"
         android:layout_marginLeft="10dp"
 
@@ -30,10 +30,21 @@
         android:text="fecha"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="22dp"
+        android:textSize="19dp"
         android:layout_marginLeft="10dp"
 
         />
+
+    <ImageButton
+        style="@android:style/Widget.DeviceDefault.ImageButton"
+        android:id="@+id/papelera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:src="@drawable/delete"
+        android:tint="#090809">
+
+    </ImageButton>
 
 
 

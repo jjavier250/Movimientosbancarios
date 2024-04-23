@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movimientosbancarios.adapter.MovimientosAdapter
@@ -72,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         txtgastos.text="Total gastos: " + gastos.toString()
         balance.text="Balance: " + total.toString()
 
-        adapter = MovimientosAdapter(listaAgenda, { llamarPantallaClick(it) })
+        adapter = MovimientosAdapter(listaAgenda, { llamarPantallaClick(it) },{llamarPapeleraClick(it)})
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
@@ -84,9 +86,73 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnborrar.setOnClickListener(){
-            movimientosDao.deleteAll()
-            onResume()
+
+
+
+            // Crear AlertDialog
+            val builder = AlertDialog.Builder(this)
+
+            // Establecer el título y el mensaje
+            builder.setTitle("Borrar datos")
+            builder.setMessage("¿Esta seguro que desea eliminar todo?")
+
+            builder.setPositiveButton("Aceptar") { dialog, which ->
+                // Acción a realizar cuando se presiona el botón Aceptar
+
+                movimientosDao.deleteAll()
+                Toast.makeText(this, "todo borrado", Toast.LENGTH_SHORT).show()
+                onResume()
+
+                dialog.dismiss()
+            }
+
+            // Agregar botón negativo
+            builder.setNegativeButton("Cancelar") { dialog, which ->
+                // Acción a realizar cuando se presiona el botón Cancelar
+                // Por ejemplo, puedes realizar alguna acción o cerrar el diálogo
+                dialog.dismiss()
+            }
+
+            // Mostrar AlertDialog
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+
+
         }
+
+    }
+
+    private fun llamarPapeleraClick(it: Int) {
+        // Crear AlertDialog
+        val builder = AlertDialog.Builder(this)
+
+        // Establecer el título y el mensaje
+        builder.setTitle("Eleminar registro")
+        builder.setMessage("¿Esta seguro que desea eliminar esta linea?")
+        builder.setPositiveButton("Aceptar") { dialog, which ->
+            // Acción a realizar cuando se presiona el botón Aceptar
+
+            var movimientos: Movimientos = listaAgenda[it]
+            movimientosDao.delete(movimientos)
+            listaAgenda.removeAt(it)
+            adapter.notifyDataSetChanged()
+
+            Toast.makeText(this, "borrado ok", Toast.LENGTH_SHORT).show()
+            onResume()
+
+            dialog.dismiss()
+        }
+
+        // Agregar botón negativo
+        builder.setNegativeButton("Cancelar") { dialog, which ->
+            // Acción a realizar cuando se presiona el botón Cancelar
+            // Por ejemplo, puedes realizar alguna acción o cerrar el diálogo
+            dialog.dismiss()
+        }
+
+        // Mostrar AlertDialog
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
 
     }
 

@@ -16,6 +16,7 @@ class MovimientosDao(context: Context) {
         var values = ContentValues()
         values.put(Movimientos.COLUMN_NAME_CANTIDAD, movimientos.cantidad)
         values.put(Movimientos.COLUMN_NAME_FECHA,movimientos.fecha )
+        values.put(Movimientos.COLUMN_NAME_DESC,movimientos.desc )
 
 
         var newRowId = db.insert(Movimientos.TABLE_NAME, null, values)
@@ -33,6 +34,7 @@ class MovimientosDao(context: Context) {
         var values = ContentValues()
         values.put(Movimientos.COLUMN_NAME_CANTIDAD,movimientos.cantidad)
         values.put(Movimientos.COLUMN_NAME_FECHA,movimientos.fecha)
+        values.put(Movimientos.COLUMN_NAME_DESC,movimientos.desc)
 
 
 
@@ -82,9 +84,9 @@ class MovimientosDao(context: Context) {
             val id = cursor.getInt(cursor.getColumnIndex(DatabaseManager.COLUMN_NAME_ID))
             val cantidad = cursor.getInt(cursor.getColumnIndex(Movimientos.COLUMN_NAME_CANTIDAD))
             val fecha = cursor.getString(cursor.getColumnIndex(Movimientos.COLUMN_NAME_FECHA))
+            val desc=cursor.getString(cursor.getColumnIndex(Movimientos.COLUMN_NAME_DESC))
 
-
-            movimientos = Movimientos(id, cantidad,fecha)
+            movimientos = Movimientos(id, cantidad,fecha,desc)
         }
 
         cursor.close()
@@ -113,9 +115,10 @@ class MovimientosDao(context: Context) {
             val id = cursor.getInt(cursor.getColumnIndex(DatabaseManager.COLUMN_NAME_ID))
             val cantidad = cursor.getInt(cursor.getColumnIndex(Movimientos.COLUMN_NAME_CANTIDAD))
             val fecha = cursor.getString(cursor.getColumnIndex(Movimientos.COLUMN_NAME_FECHA))
+            val desc=cursor.getString(cursor.getColumnIndex(Movimientos.COLUMN_NAME_DESC))
 
 
-            val movimientos: Movimientos = Movimientos(id, cantidad, fecha)
+            val movimientos: Movimientos = Movimientos(id, cantidad, fecha,desc)
             list.add(movimientos)
         }
 
